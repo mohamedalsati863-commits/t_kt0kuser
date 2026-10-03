@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Hub - Main Menu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #111216;
+            --sidebar-bg: #191b21;
+            --card-bg: #21252f;
+            --accent-blue: #00a2ff;
+            --text-main: #ffffff;
+            --text-sub: #8f98a0;
+            --border-color: #2c303c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            direction: ltr !important;
+        }
+
+        /* --- القائمة الجانبية (يسار) --- */
+        .sidebar {
+            width: 260px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            padding: 20px 10px;
+            flex-shrink: 0;
+            direction: ltr !important;
+            text-align: left !important;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 10px 20px 10px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .menu-title {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            padding: 0 10px 10px 10px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            color: var(--text-sub);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            font-weight: 600;
+            direction: ltr !important;
+            text-align: left !important;
+        }
+
+        .nav-map-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+        }
+
+        .nav-item:hover {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+        }
+
+        .nav-item.active {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        /* --- محتوى الصفحة (يمين) --- */
+        .main-content {
+            flex: 1;
+            padding: 30px 40px;
+            overflow-y: auto;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .content-header {
+            margin-bottom: 30px;
+        }
+
+        .content-header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+        }
+
+        .content-header p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        /* كارت التفاصيل */
+        .map-preview-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 800px;
+        }
+
+        .map-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .map-large-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+            background-color: #16181f;
+        }
+
+        .map-details h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .map-details p {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+        }
+
+        .btn-open-tasks {
+            background-color: var(--accent-blue);
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            align-self: flex-start;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-open-tasks:hover {
+            background-color: #0082cc;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+                overflow: auto;
+            }
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- القائمة الجانبية (يسار) -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>🎮 Dashboard Hub</h2>
+        </div>
+        
+        <div class="menu-title">Experiences</div>
+        <ul class="nav-list">
+            <li class="nav-item active" onclick="selectMap('Blox Fruits', 'ماب Blox Fruits', 'blox-fruits.png', 'blox-fruits.html')">
+                <img src="blox-fruits.png" alt="Blox Fruits" class="nav-map-icon">
+                <span>Blox Fruits</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- المحتوى المعروض (يمين) -->
+    <div class="main-content">
+        <div class="content-header">
+            <h1 id="selected-title">Blox Fruits</h1>
+            <p id="selected-desc">اختر الماب من القائمة الجانبية لعرض قائمته.</p>
+        </div>
+
+        <div class="map-preview-card">
+            <div class="map-info">
+                <img src="blox-fruits.png" alt="Map Image" class="map-large-img" id="selected-img">
+                
+                <div class="map-details">
+                    <h3 id="card-title">Blox Fruits</h3>
+                    <p id="card-desc">اضغط أدناه للانتقال إلى القائمة الخاصة بالسكربتات والمهام.</p>
+                </div>
+            </div>
+            <a href="blox-fruits.html" id="action-btn" class="btn-open-tasks">دخول قائمة المهام ←</a>
+        </div>
+    </div>
+
+    <script>
+        function selectMap(name, desc, imgUrl, pageUrl) {
+            document.getElementById('selected-title').innerText = name;
+            document.getElementById('card-title').innerText = name;
+            document.getElementById('card-desc').innerText = desc;
+            document.getElementById('selected-img').src = imgUrl;
+            document.getElementById('action-btn').href = pageUrl;
+
+            const items = document.querySelectorAll('.nav-item');
+            items.forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
