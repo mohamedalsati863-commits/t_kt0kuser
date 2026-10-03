@@ -29,10 +29,10 @@
             display: flex;
             height: 100vh;
             overflow: hidden;
-            direction: ltr !important; /* إجباري لتركيب الهيكل من اليسار لليمين */
+            direction: ltr !important;
         }
 
-        /* --- الشريط الجانبي (إجباري على اليسار) --- */
+        /* --- القائمة الجانبية (يسار) --- */
         .sidebar {
             width: 260px;
             background-color: var(--sidebar-bg);
@@ -78,7 +78,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 12px 15px;
+            padding: 10px 12px;
             border-radius: 8px;
             color: var(--text-sub);
             text-decoration: none;
@@ -88,6 +88,14 @@
             font-weight: 600;
             direction: ltr !important;
             text-align: left !important;
+        }
+
+        .nav-map-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
         }
 
         .nav-item:hover {
@@ -101,12 +109,12 @@
             border-left: 4px solid var(--accent-blue);
         }
 
-        /* --- منطقة عرض المحتوى (على اليمين) --- */
+        /* --- محتوى الصفحة (يمين) --- */
         .main-content {
             flex: 1;
             padding: 30px 40px;
             overflow-y: auto;
-            direction: rtl; /* محتوى النصوص والمعلومات يقرأ باللغة العربية */
+            direction: rtl;
             text-align: right;
         }
 
@@ -142,16 +150,13 @@
             gap: 20px;
         }
 
-        .map-icon {
-            width: 70px;
-            height: 70px;
-            background-color: #16181f;
+        .map-large-img {
+            width: 90px;
+            height: 90px;
             border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.2rem;
+            object-fit: cover;
             border: 1px solid var(--border-color);
+            background-color: #16181f;
         }
 
         .map-details h3 {
@@ -198,7 +203,7 @@
 </head>
 <body>
 
-    <!-- القائمة الجانبية (مثبتة على اليسار) -->
+    <!-- القائمة الجانبية (يسار) -->
     <div class="sidebar">
         <div class="sidebar-header">
             <h2>🎮 Dashboard Hub</h2>
@@ -206,13 +211,14 @@
         
         <div class="menu-title">Experiences</div>
         <ul class="nav-list">
-            <li class="nav-item active" onclick="selectMap('Blox Fruits', 'دليل المهام والأسلحة الأسطورية لماب Blox Fruits', '⚔️', 'blox-fruits.html')">
-                <span>⚔️</span> Blox Fruits
+            <li class="nav-item active" onclick="selectMap('Blox Fruits', 'دليل المهام والأسلحة الأسطورية لماب Blox Fruits', 'https://assetdelivery.roblox.com/v1/asset/?id=82410227976907', 'blox-fruits.html')">
+                <img src="https://assetdelivery.roblox.com/v1/asset/?id=82410227976907" alt="Blox Fruits" class="nav-map-icon">
+                <span>Blox Fruits</span>
             </li>
         </ul>
     </div>
 
-    <!-- محتوى الصفحة المعروض (على اليمين) -->
+    <!-- المحتوى المعروض (يمين) -->
     <div class="main-content">
         <div class="content-header">
             <h1 id="selected-title">Blox Fruits</h1>
@@ -221,7 +227,8 @@
 
         <div class="map-preview-card">
             <div class="map-info">
-                <div class="map-icon" id="selected-icon">⚔️</div>
+                <img src="https://assetdelivery.roblox.com/v1/asset/?id=82410227976907" alt="Map Image" class="map-large-img" id="selected-img">
+                
                 <div class="map-details">
                     <h3 id="card-title">Blox Fruits</h3>
                     <p id="card-desc">دليل كامل للقيام بمهام الحصول على الأسلحة مثل CDK وغيرها خطوة بخطوة.</p>
@@ -232,11 +239,11 @@
     </div>
 
     <script>
-        function selectMap(name, desc, icon, pageUrl) {
+        function selectMap(name, desc, imgUrl, pageUrl) {
             document.getElementById('selected-title').innerText = name;
             document.getElementById('card-title').innerText = name;
             document.getElementById('card-desc').innerText = desc;
-            document.getElementById('selected-icon').innerText = icon;
+            document.getElementById('selected-img').src = imgUrl;
             document.getElementById('action-btn').href = pageUrl;
 
             const items = document.querySelectorAll('.nav-item');
