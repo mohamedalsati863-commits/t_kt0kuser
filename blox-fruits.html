@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blox Fruits - الأقسام الرئيسية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #111216;
+            --sidebar-bg: #191b21;
+            --card-bg: #21252f;
+            --accent-blue: #00a2ff;
+            --text-main: #ffffff;
+            --text-sub: #8f98a0;
+            --border-color: #2c303c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .btn-back {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 8px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-back:hover {
+            background-color: var(--border-color);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .category-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-3px);
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-desc {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .btn-enter {
+            background-color: var(--accent-blue);
+            color: #ffffff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            text-align: center;
+            display: block;
+            transition: background 0.2s;
+        }
+
+        .btn-enter:hover {
+            background-color: #0082cc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Blox Fruits - الأقسام</h1>
+            <a href="index.html" class="btn-back">← العودة للرئيسية</a>
+        </div>
+
+        <div class="categories-grid">
+            <!-- قسم الأساليب -->
+            <div class="category-card">
+                <div class="category-title">
+                    <span>🥊</span>
+                    <span>قسم أساليب القتال (Fighting Styles)</span>
+                </div>
+                <p class="category-desc">شروحات ومتطلبات تعلم أساليب القتال المتقدمة والأسطورية.</p>
+                <a href="styles.html" class="btn-enter">دخول القسم ←</a>
+            </div>
+
+            <!-- قسم السيوف -->
+            <div class="category-card">
+                <div class="category-title">
+                    <span>⚔️</span>
+                    <span>قسم السيوف (Swords)</span>
+                </div>
+                <p class="category-desc">شروحات وطرق الحصول على السيوف الأسطورية والعادية داخل اللعبة.</p>
+                <a href="swords.html" class="btn-enter">دخول القسم ←</a>
+            </div>
+
+            <!-- قسم الأسلحة -->
+            <div class="category-card">
+                <div class="category-title">
+                    <span>🔫</span>
+                    <span>قسم الأسلحة (Guns)</span>
+                </div>
+                <p class="category-desc">شروحات وطرق الحصول على الأسلحة النارية والبنادق بمختلف أنواعها.</p>
+                <a href="guns.html" class="btn-enter">دخول القسم ←</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
