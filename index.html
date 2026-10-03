@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roblox Hub - Creator Dashboard Style</title>
+    <title>Roblox Hub - Main Menu</title>
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #111216;
             --sidebar-bg: #191b21;
             --card-bg: #21252f;
-            --card-hover: #2b303d;
             --accent-blue: #00a2ff;
             --text-main: #ffffff;
             --text-sub: #8f98a0;
@@ -30,17 +29,20 @@
             display: flex;
             height: 100vh;
             overflow: hidden;
+            direction: ltr !important; /* إجباري لتركيب الهيكل من اليسار لليمين */
         }
 
-        /* --- الشريط الجانبي (Sidebar) --- */
+        /* --- الشريط الجانبي (إجباري على اليسار) --- */
         .sidebar {
             width: 260px;
             background-color: var(--sidebar-bg);
-            border-left: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
             padding: 20px 10px;
             flex-shrink: 0;
+            direction: ltr !important;
+            text-align: left !important;
         }
 
         .sidebar-header {
@@ -50,11 +52,6 @@
             padding: 0 10px 20px 10px;
             border-bottom: 1px solid var(--border-color);
             margin-bottom: 20px;
-        }
-
-        .sidebar-header img {
-            width: 28px;
-            height: 28px;
         }
 
         .sidebar-header h2 {
@@ -89,6 +86,8 @@
             transition: all 0.2s ease;
             font-size: 0.95rem;
             font-weight: 600;
+            direction: ltr !important;
+            text-align: left !important;
         }
 
         .nav-item:hover {
@@ -99,14 +98,16 @@
         .nav-item.active {
             background-color: var(--card-bg);
             color: var(--text-main);
-            border-right: 4px solid var(--accent-blue);
+            border-left: 4px solid var(--accent-blue);
         }
 
-        /* --- محتوى الصفحة الرئيسي (Main Content) --- */
+        /* --- منطقة عرض المحتوى (على اليمين) --- */
         .main-content {
             flex: 1;
             padding: 30px 40px;
             overflow-y: auto;
+            direction: rtl; /* محتوى النصوص والمعلومات يقرأ باللغة العربية */
+            text-align: right;
         }
 
         .content-header {
@@ -123,7 +124,7 @@
             font-size: 0.95rem;
         }
 
-        /* كارت عرض الماب المحدد */
+        /* كارت التفاصيل */
         .map-preview-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -182,7 +183,6 @@
             background-color: #0082cc;
         }
 
-        /* الاستجابة للجوال */
         @media (max-width: 768px) {
             body {
                 flex-direction: column;
@@ -190,7 +190,7 @@
             }
             .sidebar {
                 width: 100%;
-                border-left: none;
+                border-right: none;
                 border-bottom: 1px solid var(--border-color);
             }
         }
@@ -198,23 +198,21 @@
 </head>
 <body>
 
-    <!-- القائمة الجانبية (الأيسر) -->
+    <!-- القائمة الجانبية (مثبتة على اليسار) -->
     <div class="sidebar">
         <div class="sidebar-header">
             <h2>🎮 Dashboard Hub</h2>
         </div>
         
-        <div class="menu-title">المابات المتاحة (Experiences)</div>
+        <div class="menu-title">Experiences</div>
         <ul class="nav-list">
-            <!-- الماب الأول: Blox Fruits -->
             <li class="nav-item active" onclick="selectMap('Blox Fruits', 'دليل المهام والأسلحة الأسطورية لماب Blox Fruits', '⚔️', 'blox-fruits.html')">
                 <span>⚔️</span> Blox Fruits
             </li>
-            <!-- تقدر تضيف مابات جديدة هنا مستقبلاً بسهولة -->
         </ul>
     </div>
 
-    <!-- المساحة الرئيسية (الأيمن) -->
+    <!-- محتوى الصفحة المعروض (على اليمين) -->
     <div class="main-content">
         <div class="content-header">
             <h1 id="selected-title">Blox Fruits</h1>
@@ -235,14 +233,12 @@
 
     <script>
         function selectMap(name, desc, icon, pageUrl) {
-            // تحديث العناوين والأيقونات عند ضغط أي ماب بالجانب
             document.getElementById('selected-title').innerText = name;
             document.getElementById('card-title').innerText = name;
             document.getElementById('card-desc').innerText = desc;
             document.getElementById('selected-icon').innerText = icon;
             document.getElementById('action-btn').href = pageUrl;
 
-            // تغيير التحديد النشط في القائمة الجانبية
             const items = document.querySelectorAll('.nav-item');
             items.forEach(item => item.classList.remove('active'));
             event.currentTarget.classList.add('active');
