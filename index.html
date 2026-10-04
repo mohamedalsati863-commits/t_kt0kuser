@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,18 +27,22 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             display: flex;
-            min-height: 100vh;
+            height: 100vh;
+            overflow: hidden;
+            direction: ltr; /* توحيد الهيكل الأساسي من اليسار لليمين */
         }
 
-        /* القائمة الجانبية (الشريط الأيمن) */
+        /* --- القائمة الجانبية (أقصى اليسار) --- */
         .sidebar {
             width: 250px;
             background-color: var(--sidebar-bg);
-            border-left: 1px solid var(--border-color);
-            padding: 20px;
+            border-right: 1px solid var(--border-color);
+            padding: 20px 15px;
             display: flex;
             flex-direction: column;
             gap: 20px;
+            flex-shrink: 0;
+            text-align: left;
         }
 
         .sidebar-title {
@@ -48,6 +52,8 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .section-label {
@@ -55,14 +61,13 @@
             color: var(--text-sub);
             font-weight: 700;
             letter-spacing: 1px;
-            margin-top: 10px;
         }
 
         .nav-item {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 10px 14px;
+            padding: 10px 12px;
             border-radius: 8px;
             color: var(--text-sub);
             text-decoration: none;
@@ -73,43 +78,48 @@
             background: transparent;
             border: none;
             width: 100%;
-            text-align: right;
+            text-align: left;
         }
 
         .nav-item:hover, .nav-item.active {
             background-color: var(--card-bg);
             color: var(--text-main);
-            border: 1px solid var(--border-color);
         }
 
         .nav-item.active {
-            border-right: 3px solid var(--accent-blue);
+            border-left: 3px solid var(--accent-blue);
         }
 
-        /* المحتوى الرئيسي (على اليسار) */
+        .nav-map-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+
+        /* --- المحتوى الرئيسي (المساحة المتبقية) --- */
         .main-content {
             flex: 1;
-            padding: 40px;
+            padding: 30px 40px;
             overflow-y: auto;
+            direction: rtl; /* الكتابة عربي داخل منطقة المحتوى */
+            text-align: right;
         }
 
         .main-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             margin-bottom: 30px;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
+            padding-bottom: 15px;
         }
 
         .main-header h2 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
         }
 
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
         }
 
@@ -117,10 +127,10 @@
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 25px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             transition: border-color 0.2s, transform 0.2s;
         }
 
@@ -130,16 +140,16 @@
         }
 
         .category-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .category-desc {
             color: var(--text-sub);
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             line-height: 1.5;
             flex: 1;
         }
@@ -148,45 +158,38 @@
             background-color: var(--accent-blue);
             color: #ffffff;
             border: none;
-            padding: 10px 16px;
+            padding: 10px 14px;
             border-radius: 8px;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             text-decoration: none;
             text-align: center;
             display: block;
-            cursor: pointer;
             transition: background 0.2s;
         }
 
         .btn-enter:hover {
             background-color: #0082cc;
         }
-
-        .empty-state {
-            color: var(--text-sub);
-            font-size: 1.1rem;
-            margin-top: 50px;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
 
-    <!-- القائمة الجانبية -->
+    <!-- القائمة الجانبية (يسار) -->
     <div class="sidebar">
         <div class="sidebar-title">
-            <span>🎮</span> Dashboard Hub
+            🎮 Dashboard Hub
         </div>
         
         <div class="section-label">EXPERIENCES</div>
-        <button class="nav-item active" onclick="showBloxFruits()">
-            <span>🏴‍‍☠️</span> Blox Fruits
+        <button class="nav-item active">
+            <img src="blox-fruits.png" class="nav-map-icon" alt="icon">
+            <span>Blox Fruits</span>
         </button>
     </div>
 
-    <!-- المحتوى على اليسار -->
-    <div class="main-content" id="content-area">
+    <!-- المحتوى (يمين القائمة) -->
+    <div class="main-content">
         <div class="main-header">
             <h2>Blox Fruits - الأقسام الرئيسية</h2>
         </div>
@@ -208,7 +211,7 @@
                     <span>⚔️</span>
                     <span>قسم السيوف (Swords)</span>
                 </div>
-                <p class="category-desc">شروحات وطرق الحصول على السيوف الأسطورية والعادية داخل اللعبة.</p>
+                <p class="category-desc">شروحات وطرق الحصول على السيوف الأسطورية والعادية.</p>
                 <a href="swords.html" class="btn-enter">دخول القسم ←</a>
             </div>
 
@@ -218,7 +221,7 @@
                     <span>🔫</span>
                     <span>قسم الأسلحة (Guns)</span>
                 </div>
-                <p class="category-desc">شروحات وطرق الحصول على الأسلحة النارية والبنادق بمختلف أنواعها.</p>
+                <p class="category-desc">شروحات وطرق الحصول على الأسلحة النارية والبنادق.</p>
                 <a href="guns.html" class="btn-enter">دخول القسم ←</a>
             </div>
         </div>
