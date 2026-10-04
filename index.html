@@ -29,10 +29,10 @@
             display: flex;
             height: 100vh;
             overflow: hidden;
-            direction: ltr; /* توحيد الهيكل الأساسي من اليسار لليمين */
+            direction: ltr;
         }
 
-        /* --- القائمة الجانبية (أقصى اليسار) --- */
+        /* --- القائمة الجانبية --- */
         .sidebar {
             width: 250px;
             background-color: var(--sidebar-bg);
@@ -67,7 +67,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 10px 12px;
+            padding: 8px 12px;
             border-radius: 8px;
             color: var(--text-sub);
             text-decoration: none;
@@ -91,18 +91,19 @@
         }
 
         .nav-map-icon {
-            width: 24px;
-            height: 24px;
-            border-radius: 4px;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
             object-fit: cover;
+            border: 1px solid var(--border-color);
         }
 
-        /* --- المحتوى الرئيسي (المساحة المتبقية) --- */
+        /* --- المحتوى الرئيسي --- */
         .main-content {
             flex: 1;
             padding: 30px 40px;
             overflow-y: auto;
-            direction: rtl; /* الكتابة عربي داخل منطقة المحتوى */
+            direction: rtl;
             text-align: right;
         }
 
@@ -144,7 +145,14 @@
             font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+        }
+
+        .category-icon-img {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            object-fit: contain;
         }
 
         .category-desc {
@@ -183,12 +191,12 @@
         
         <div class="section-label">EXPERIENCES</div>
         <button class="nav-item active">
-            <img src="blox-fruits.png" class="nav-map-icon" alt="icon">
+            <img src="blox-fruits.png" class="nav-map-icon" alt="Blox Fruits">
             <span>Blox Fruits</span>
         </button>
     </div>
 
-    <!-- المحتوى (يمين القائمة) -->
+    <!-- المحتوى (يمين) -->
     <div class="main-content">
         <div class="main-header">
             <h2>Blox Fruits - الأقسام الرئيسية</h2>
@@ -198,7 +206,7 @@
             <!-- قسم أساليب القتال -->
             <div class="category-card">
                 <div class="category-title">
-                    <span>🥊</span>
+                    <img src="styles.jpeg" class="category-icon-img" alt="Fighting Styles">
                     <span>قسم أساليب القتال (Fighting Styles)</span>
                 </div>
                 <p class="category-desc">شروحات ومتطلبات تعلم أساليب القتال المتقدمة والأسطورية.</p>
@@ -208,7 +216,7 @@
             <!-- قسم السيوف -->
             <div class="category-card">
                 <div class="category-title">
-                    <span>⚔️</span>
+                    <img src="swords.jpeg" class="category-icon-img" alt="Swords">
                     <span>قسم السيوف (Swords)</span>
                 </div>
                 <p class="category-desc">شروحات وطرق الحصول على السيوف الأسطورية والعادية.</p>
@@ -218,7 +226,7 @@
             <!-- قسم الأسلحة -->
             <div class="category-card">
                 <div class="category-title">
-                    <span>🔫</span>
+                    <img src="guns.jpeg" class="category-icon-img" alt="Guns">
                     <span>قسم الأسلحة (Guns)</span>
                 </div>
                 <p class="category-desc">شروحات وطرق الحصول على الأسلحة النارية والبنادق.</p>
